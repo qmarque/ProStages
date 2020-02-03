@@ -6,6 +6,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
 use App\Entity\Stage;
+use App\Entity\Entreprise;
+use App\Entity\Formation;
+
 
 class ProStagesController extends AbstractController
 {
@@ -14,10 +17,17 @@ class ProStagesController extends AbstractController
      */
     public function indexHome()
     {
-return $this -> render('pro_stages/indexHome.html.twig');
+//return $this -> render('pro_stages/indexHome.html.twig');
 
         /*return new Response('<html><body><h1> Bienvenue sur la page d accueil de Prostages</h1></body></html>');*/
         
+
+        // Récupérer le repository de l'entité Stage
+    $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+    // Récupérer les stages enregistrés en BD
+    $stages = $repositoryStage->findAll();
+    // Envoyer les stages récupérés à la vue chargée de les afficher
+    return $this->render('pro_stages/indexHome.html.twig', ['stages'=>$stages]);
     }
 
 
@@ -28,11 +38,17 @@ return $this -> render('pro_stages/indexHome.html.twig');
     
     public function indexEntreprises()
     {
-        return $this -> render('pro_stages/indexEntreprises.html.twig');
+        //return $this -> render('pro_stages/indexEntreprises.html.twig');
 
 
         /*return new Response('<html><body><h1> Cette page affichera la liste des entreprises proposant un stage</h1></body></html>');*/
-    
+        
+    // Récupérer le repository de l'entité Entreprise
+    $repositoryEntreprise = $this->getDoctrine()->getRepository(Entreprise::class);
+    // Récupérer les entreprises enregistrées en BD
+    $entreprises = $repositoryEntreprise->findAll();
+    // Envoyer les entreprises récupérées à la vue chargée de les afficher
+    return $this->render('pro_stages/indexEntreprises.html.twig', ['entreprises'=>$entreprises]);
     }
 
 
@@ -41,11 +57,17 @@ return $this -> render('pro_stages/indexHome.html.twig');
      */
     public function indexFormations()
     {
-        return $this -> render('pro_stages/indexFormations.html.twig');
+       // return $this -> render('pro_stages/indexFormations.html.twig');
 
 
        /* return new Response('<html><body><h1> Cette page affichera la liste des formations de l IUT</h1></body></html>');*/
-    
+     
+       // Récupérer le repository de l'entité Formation
+       $repositoryFormation = $this->getDoctrine()->getRepository(Formation::class);
+       // Récupérer les formations enregistrées en BD
+       $formations = $repositoryFormation->findAll();
+       // Envoyer les formations récupérées à la vue chargée de les afficher
+       return $this->render('pro_stages/indexFormations.html.twig', ['formations'=>$formations]);
     }
 
 
@@ -55,26 +77,21 @@ return $this -> render('pro_stages/indexHome.html.twig');
     public function indexStages($id)
     {
 
-        return $this -> render('pro_stages/indexStages.html.twig', ['id'=>$id]);
+       // return $this -> render('pro_stages/indexStages.html.twig', ['id'=>$id]);
 
 
        /* return new Response('<html><body><h1> Cette page affichera le descriptif du stage ayant pour identifiant id </h1></body></html>');*/
     
+       // Récupérer le repository de l'entité Stage
+    $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+    // Récupérer les stages enregistrés en BD
+    $stage = $repositoryStage->find($id);
+    // Envoyer les stages récupérés à la vue chargée de les afficher
+
+    return $this->render('pro_stages/indexStages.html.twig',
+    ['stage' => $stage]);
     }
 
     
 
-    /*public functon index()
-    {
-            
-        // Récupérer le repository de l'entité Stage
-       $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
-
-       // Récupérer les stages enregistrés en BD
-       $stages = $repositoryStage->findAll();
-
-       // Envoyer les stages récupérés à la vue chargée de les afficher
-        return $this->render('pro_stages/index.html.twig',['stages'=>$stages]);
-        
-    }*/
 }

@@ -2,113 +2,36 @@
 
 
 {% block contenu %}
-<!doctype html>
-<html lang="fr">
-
-<head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-        <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-                integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-                crossorigin="anonymous">
 
 
-        <!-- Surchage du CSS de Bootstrap pour faire apparaître les colonnes -->
-        <!--<link rel="stylesheet" href="MonCss.css" /> -->
+<!-- Tableau contenant les différents stages/entreprises/formations-->
+<table class="table table-striped table-dark">
+  <thead>
+    <tr>
+      <th scope="col">Intitulé</th>
+      <th scope="col">Entreprise</th>
+      <th scope="col">Formation</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for stageCourant in stages %}
+    <tr>
 
+      <td><a href = "{{path('stages', {id:stageCourant.id})}}" style="color:white; text-decoration:none;">
+        {{stageCourant.titre}}</a></td>
 
+        <td>{{stageCourant.entreprise.getNom}}</td>
 
-        <title>Accueil</title>
-</head>
+        <td>
+          {% for formationCourante in stageCourant.formations %}
+          {{formationCourante.nomCourt}}
 
+          {% endfor %}
+        </td>
 
-<body>
-        <div class="container-fluid">
-                
-                <div class="row">
-                        <div class="col-md-4">
-                                <h2>
-                                        Stage 1
-                                </h2>
-                                <p>
-                                        Ce stage de développeur web durerait 2 mois. L'entreprise Safran, se situant à Tarnos vous propose de réaliser différentes missions ...
-                                </p>
-                                <p>
-                                        <a class="btn" href="/stages/{id}">Plus de détails » <link rel="stylesheet"  /> </a>
-                                    
-                                </p>
-                        </div>
-                        <div class="col-md-4">
-                                <h2>
-                                         Stage 2
-                                        </h2>
-                                <p>
-                                                Ce stage de développeur web durerait 2 mois. L'entreprise Safran, se situant à Tarnos vous propose de réaliser différentes missions ...
-
-                                </p>
-                                <p>
-                                        <a class="btn" href="/stages/{id}">Plus de détails »</a>
-                                </p>
-                        </div>
-                        <div class="col-md-4">
-                                <h2>
-                                        Stage 3
-                                </h2>
-                                <p>
-                                                Ce stage de développeur web durerait 2 mois. L'entreprise Safran, se situant à Tarnos vous propose de réaliser différentes missions ...
-
-                                </p>
-                                <p>
-                                        <a class="btn" href="/stages/{id}">Plus de détails »</a>
-                                </p>
-                        </div>
-                </div>
-                <div class="row">
-                        <div class="col-md-4">
-                                <h2>
-                                        Stage 4
-                                </h2>
-                                <p>
-                                                Ce stage de développeur web durerait 2 mois. L'entreprise Safran, se situant à Tarnos vous propose de réaliser différentes missions ...
-
-                                </p>
-                                <p>
-                                        <a class="btn" href="/stages/{id}">Plus de détails »</a>
-                                </p>
-                        </div>
-                        <div class="col-md-4">
-                                <h2>
-                                        Stage 5
-                                </h2>
-                                <p>
-                                                Ce stage de développeur web durerait 2 mois. L'entreprise Safran, se situant à Tarnos vous propose de réaliser différentes missions ...
-
-                                </p>
-                                <p>
-                                        <a class="btn" href="/stages/{id}">Plus de détails »</a>
-                                </p>
-                        </div>
-                        <div class="col-md-4">
-                                <h2>
-                                        Stage 6
-                                </h2>
-                                <p>
-                                                                                Ce stage de développeur web durerait 2 mois. L'entreprise Safran, se situant à Tarnos vous propose de réaliser différentes missions ...
-
-                                </p>
-                                <p>
-                                        <a class="btn" href="/stages/{id}">Plus de détails »</a>
-                                </p>
-                        </div>
-                </div>
-               
-        </div>
-</body>
-
-</html>
-
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
 
 {% endblock %}
