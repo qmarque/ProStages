@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Stage;
+
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
@@ -51,6 +52,49 @@ class StageRepository extends ServiceEntityRepository
               ->getResult()
           ;
       }
+
+    
+
+      /**
+      * @return Stage[] Returns an array of Stage objects
+      */
+
+    public function findByNomFormation($nomFormation)
+    {
+        // Récupération du gestionnaire d'entité
+        $gestionnaireEntite = $this->getEntityManager();
+
+        // Construction de la requête
+        $requete = $gestionnaireEntite->createQuery(
+          'SELECT s, f
+          FROM App\Entity\Stage s
+          JOIN s.formation f
+          WHERE f.nom = :nomFormation');
+
+        // Définition de la valeur du paramètre injecté dans la requête
+        $requete->setParameter('nomFormation', $nomFormation);
+
+        // Retourner les résultats
+        return $requete->execute();
+    }
+
+
+    public function getStageEntrepriseEtFormation()
+    {
+        // Récupération du gestionnaire d'entité
+        $gestionnaireEntite = $this->getEntityManager();
+
+        // Construction de la requête
+        $requete = $gestionnaireEntite->createQuery(
+          'SELECT s, e, f
+          FROM App\Entity\Stage s
+          JOIN s.formations f
+          JOIN s.entreprise e');
+
+        // Retourner les résultats
+        return $requete->execute();
+    }
+
     /*
     public function findOneBySomeField($value): ?Stage
     {
