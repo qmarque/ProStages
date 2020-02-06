@@ -68,8 +68,8 @@ class StageRepository extends ServiceEntityRepository
         $requete = $gestionnaireEntite->createQuery(
           'SELECT s, f
           FROM App\Entity\Stage s
-          JOIN s.formation f
-          WHERE f.nom = :nomFormation');
+          JOIN s.formations f
+          WHERE f.nomCourt = :nomFormation');
 
         // Définition de la valeur du paramètre injecté dans la requête
         $requete->setParameter('nomFormation', $nomFormation);

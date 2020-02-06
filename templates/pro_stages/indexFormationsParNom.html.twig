@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}
-Entreprise
+Formation
 {% endblock %}
 
 {% block contenu %}
@@ -13,11 +13,10 @@ Entreprise
       <th scope="col">Intitulé</th>
       <th scope="col">Entreprise</th>
       <th scope="col">Formation</th>
-      
     </tr>
   </thead>
   <tbody>
-    {% for stageCourant in stagesParNomEntreprise %}
+    {% for stageCourant in stagesParNomFormation %}
     <tr>
 
       <td><a href = "{{path('stages', {id:stageCourant.id})}}" style="color:white; text-decoration:none;">
