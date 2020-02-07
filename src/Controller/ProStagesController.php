@@ -28,6 +28,16 @@ class ProStagesController extends AbstractController
     return $this->render('pro_stages/indexHome.html.twig', ['stages'=>$stages]);
     }
 
+    /**
+     * @Route("/entreprises/ajouter", name="ajoutEntreprise")
+     */
+    //public function indexHome()
+    public function ajouterRessource()
+    {
+    
+    //Afficher la page présentant le formulaire d'ajout d'une entreprise
+    return $this->render('pro_stages/ajoutEntreprise.html.twig');
+    }
 
     /**
      * @Route("/entreprises", name="entreprises")
