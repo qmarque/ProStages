@@ -28,16 +28,33 @@ class ProStagesController extends AbstractController
     return $this->render('pro_stages/indexHome.html.twig', ['stages'=>$stages]);
     }
 
+
     /**
      * @Route("/entreprises/ajouter", name="ajoutEntreprise")
      */
     //public function indexHome()
-    public function ajouterRessource()
+    public function ajouterEntreprise()
     {
+        //Création d'une entreprise vierge qui sera remplie par le formulaire
+        $entreprise = new Entreprise();
+
+        //Création du formulaire permettent de saisir une entreprise
+        $formulaireEntreprise = $this->createFormBuilder($entreprise)
+        ->add('nom')
+        ->add('activite')
+        ->add('adresse')
+        ->add('siteWeb')
+        ->getForm();
+
+        //Création de la représentation graphique du formulaire
+        $vueFormulaire = $formulaireEntreprise->createView();
     
     //Afficher la page présentant le formulaire d'ajout d'une entreprise
-    return $this->render('pro_stages/ajoutEntreprise.html.twig');
+    return $this->render('pro_stages/ajoutEntreprise.html.twig',['vueFormulaire' => $vueFormulaire]);
     }
+
+
+
 
     /**
      * @Route("/entreprises", name="entreprises")
@@ -51,6 +68,9 @@ class ProStagesController extends AbstractController
     // Envoyer les entreprises récupérées à la vue chargée de les afficher
     return $this->render('pro_stages/indexEntreprises.html.twig', ['entreprises'=>$entreprises]);
     }
+
+
+
 
      /**
      * @Route("/entreprises/{nom}", name="stagesParEntreprise")
@@ -67,6 +87,8 @@ class ProStagesController extends AbstractController
     }
 
 
+
+
     /**
      * @Route("/formations", name="formations")
      */
@@ -77,6 +99,8 @@ class ProStagesController extends AbstractController
        // Envoyer les formations récupérées à la vue chargée de les afficher
        return $this->render('pro_stages/indexFormations.html.twig', ['formations'=>$formations]);
     }
+
+
 
     /**
      * @Route("/formations/{nom}", name="stagesParFormation")
@@ -90,6 +114,8 @@ class ProStagesController extends AbstractController
     // Envoyer les formations récupérées à la vue chargée de les afficher
     return $this->render('pro_stages/indexFormationsParNom.html.twig', ['stagesParNomFormation'=>$stagesParNomFormation]);
     }
+
+
 
 
     /**
