@@ -9,12 +9,24 @@ Ajout d'une entreprise
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-md-9 " style="text-align: left">
+        <div class="col-md-9" style="text-align: left">
             <div class="card" style="width: 14 rem;">
                 <div class="card-header">
                     Saisissez les caractéristiques d'une nouvelle entreprise
                 </div>
-                {{ form(vueFormulaire) }}
+                {{form_start(vueFormulaire)}}
+
+                {{form_row(vueFormulaire.nom)}}
+
+                {{form_row(vueFormulaire.activite)}}
+
+                {{form_row(vueFormulaire.adresse)}}
+
+                {{form_row(vueFormulaire.siteWeb)}}
+
+                {{form_end(vueFormulaire)}}
+
+
             </div>
         </div>
     </div>
