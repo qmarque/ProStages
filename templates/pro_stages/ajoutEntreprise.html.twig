@@ -5,8 +5,19 @@ Ajout d'une entreprise
 
 {% block contenu %}
 
-<center><h4>Saisissez les caractéristiques d'une nouvelle entreprise.</h4>
-    <br>
 
-{{ form(vueFormulaire) }}</center>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-9 " style="text-align: left">
+            <div class="card" style="width: 14 rem;">
+                <div class="card-header">
+                    Saisissez les caractéristiques d'une nouvelle entreprise
+                </div>
+                {{ form(vueFormulaire) }}
+            </div>
+        </div>
+    </div>
+</div>
+
 {% endblock %}
