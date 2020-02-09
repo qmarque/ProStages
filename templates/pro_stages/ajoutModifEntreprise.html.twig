@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block titre %}
+{% if action == "ajouter" %}
+Ajout d'une entreprise
+{% else %}
+Modification d'une entreprise
+{% endif %}
+{% endblock %}
+
+{% block contenu %}
+
+
+
+<div class="container-fluid">
+    <div class="row" >
+        <div class="col-md-9" style="text-align: left">
+            <div class="card" style="width: 14 rem;">
+                <b><div class="card-header">
+                    Saisissez les caractéristiques d'une entreprise
+                </div></b>
+                {{form_start(vueFormulaire)}}
+
+                {{form_row(vueFormulaire.nom, {'attr':{'placeholder':"Nom de l'entreprise..."}})}}
+
+                {{form_row(vueFormulaire.activite, {'attr':{'placeholder':"Activité de l'entreprise..."}})}}
+
+                {{form_row(vueFormulaire.adresse, {'attr':{'placeholder':"Adresse de l'entreprise..."}})}}
+
+                {{form_row(vueFormulaire.siteWeb, {'attr':{'placeholder':"Url du site web..."}})}}
+
+                <button type="submit" class="btn btn-secondary">Enregistrer</button>
+
+                {{form_end(vueFormulaire)}}
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

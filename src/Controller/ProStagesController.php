@@ -62,7 +62,7 @@ class ProStagesController extends AbstractController
             $manager->persist($entreprise);
             $manager->flush();
 
-            // Rediriger l'utilisateur vers la page d'accueil
+            // Rediriger l'utilisateur vers la page des entreprises
             return $this->redirectToRoute('entreprises');
          }
 
@@ -70,8 +70,47 @@ class ProStagesController extends AbstractController
         $vueFormulaire = $formulaireEntreprise->createView();
     
     //Afficher la page présentant le formulaire d'ajout d'une entreprise
-    return $this->render('pro_stages/ajoutEntreprise.html.twig',['vueFormulaire' => $vueFormulaire]);
+    return $this->render('pro_stages/ajoutModifEntreprise.html.twig',['vueFormulaire' => $vueFormulaire, 'action'=>"ajouter"]);
     }
+
+
+    /**
+     * @Route("/entreprises/modifier/{id}", name="modifEntreprise")
+     */
+    //public function indexHome()
+    public function modifierEntreprise(Request $request, ObjectManager $manager, Entreprise $entreprise)
+    {
+        
+        //Création du formulaire permettent de saisir une entreprise
+        $formulaireEntreprise = $this->createFormBuilder($entreprise)
+        ->add('nom')
+        ->add('activite')
+        ->add('adresse')
+        ->add('siteWeb', UrlType::class)
+        ->getForm();
+
+         /*On demande au formulaire d'analyser la dernière requête Http. Si le tableau POST contenu dans cette requête
+         contient des variables nom,activite,adresse,siteweb, alors la méthode handlerequest récupère les valeurs de 
+         ces varaibles et les affecte à l'objet entreprise*/
+         $formulaireEntreprise->handleRequest($request);
+
+         if ($formulaireEntreprise->isSubmitted() )
+         {            
+            // Enregistrer la ressource en base de donnéelse
+            $manager->persist($entreprise);
+            $manager->flush();
+
+            // Rediriger l'utilisateur vers la page des entreprises
+            return $this->redirectToRoute('entreprises');
+         }
+
+        //Création de la représentation graphique du formulaire
+        $vueFormulaire = $formulaireEntreprise->createView();
+    
+    //Afficher la page présentant le formulaire d'ajout d'une entreprise
+    return $this->render('pro_stages/ajoutModifEntreprise.html.twig',['vueFormulaire' => $vueFormulaire,'action'=>"modifier"]);
+    }
+
 
 
 
