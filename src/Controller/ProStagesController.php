@@ -12,7 +12,6 @@ use App\Repository\StageRepository;
 use App\Repository\EntrepriseRepository;
 use App\Repository\FormationRepository;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
-use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 
 
@@ -43,9 +42,9 @@ class ProStagesController extends AbstractController
 
         //Création du formulaire permettent de saisir une entreprise
         $formulaireEntreprise = $this->createFormBuilder($entreprise)
-        ->add('nom',TextType::class)
-        ->add('activite',TextType::class)
-        ->add('adresse',TextType::class)
+        ->add('nom')
+        ->add('activite')
+        ->add('adresse')
         ->add('siteWeb', UrlType::class)
         ->getForm();
 
