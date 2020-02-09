@@ -12,6 +12,8 @@ use App\Repository\StageRepository;
 use App\Repository\EntrepriseRepository;
 use App\Repository\FormationRepository;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\HttpFoundation\Request;
+use Doctrine\Common\Persistence\ObjectManager;
 
 
 
@@ -35,7 +37,7 @@ class ProStagesController extends AbstractController
      * @Route("/entreprises/ajouter", name="ajoutEntreprise")
      */
     //public function indexHome()
-    public function ajouterEntreprise()
+    public function ajouterEntreprise(Request $request, ObjectManager $manager)
     {
         //Création d'une entreprise vierge qui sera remplie par le formulaire
         $entreprise = new Entreprise();
@@ -47,6 +49,22 @@ class ProStagesController extends AbstractController
         ->add('adresse')
         ->add('siteWeb', UrlType::class)
         ->getForm();
+
+         /*On demande au formulaire d'analyser la dernière requête Http. Si le tableau POST contenu dans cette requête
+         contient des variables nom,activite,adresse,siteweb, alors la méthode handlerequest récupère les valeurs de 
+         ces varaibles et les affecte à l'objet entreprise*/
+         $formulaireEntreprise->handleRequest($request);
+
+         if ($formulaireEntreprise->isSubmitted() )
+         {
+            
+            // Enregistrer la ressource en base de donnéelse
+            $manager->persist($entreprise);
+            $manager->flush();
+
+            // Rediriger l'utilisateur vers la page d'accueil
+            return $this->redirectToRoute('entreprises');
+         }
 
         //Création de la représentation graphique du formulaire
         $vueFormulaire = $formulaireEntreprise->createView();
