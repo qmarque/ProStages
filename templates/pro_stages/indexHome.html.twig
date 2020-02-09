@@ -17,23 +17,41 @@
     {% for stageCourant in stages %}
     <tr>
 
-      <td><a href = "{{path('stages', {id:stageCourant.id})}}" style="color:white; text-decoration:none;">
-        {{stageCourant.titre}}</a></td>
+      <td><a href="{{path('stages', {id:stageCourant.id})}}" style="color:white; text-decoration:none;">
+          {{stageCourant.titre}}</a></td>
 
-        <td><a href = "{{path('stagesParEntreprise', {nom:stageCourant.entreprise.getNom})}}" style="color:white; text-decoration:none;">
+      <td><a href="{{path('stagesParEntreprise', {nom:stageCourant.entreprise.getNom})}}"
+          style="color:white; text-decoration:none;">
           {{stageCourant.entreprise.getNom}}</a></td>
-        <td>
-          {% for formationCourante in stageCourant.formations %}
-          {{formationCourante.nomCourt}}
+      <td>
+        {% for formationCourante in stageCourant.formations %}
+        {{formationCourante.nomCourt}}
 
-          {% endfor %}
-        </td>
+        {% endfor %}
+      </td>
 
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
 
-  
 
+
+
+<br><br>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-3 col-sm-12" style="text-align: center">
+      <div class="card" style="width: 14 rem;">
+        <div class="card-header">
+          Afficher les stages par :
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><a href="{{path('entreprises')}}">Entreprises</a></li>
+          <li class="list-group-item"><a href="{{path('formations')}}">Formations</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
