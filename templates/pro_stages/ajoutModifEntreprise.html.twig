@@ -20,7 +20,7 @@ Modification d'une entreprise
                         Saisissez les caractéristiques d'une entreprise
                     </div>
                 </b>
-                {{form_start(vueFormulaire)}}
+                {{form_start(vueFormulaire, {'attr':{'novalidate':'novalidate'}})}}
 
                 <label>&nbsp;Nom </label>
                 {{form_errors(vueFormulaire.nom)}}
