@@ -55,7 +55,7 @@ class ProStagesController extends AbstractController
          ces varaibles et les affecte à l'objet entreprise*/
          $formulaireEntreprise->handleRequest($request);
 
-         if ($formulaireEntreprise->isSubmitted() )
+         if ($formulaireEntreprise->isSubmitted() && $formulaireEntreprise->isValid())
          {
             
             // Enregistrer la ressource en base de donnéelse
@@ -94,7 +94,7 @@ class ProStagesController extends AbstractController
          ces varaibles et les affecte à l'objet entreprise*/
          $formulaireEntreprise->handleRequest($request);
 
-         if ($formulaireEntreprise->isSubmitted() )
+         if ($formulaireEntreprise->isSubmitted()&& $formulaireEntreprise->isValid() )
          {            
             // Enregistrer la ressource en base de donnéelse
             $manager->persist($entreprise);

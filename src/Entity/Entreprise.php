@@ -5,6 +5,9 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints\NotBlank;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EntrepriseRepository")
@@ -20,11 +23,18 @@ class Entreprise
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+
+     * @Assert\Length(
+     * min=4,
+     * minMessage="Le nom doit faire au minimum 4 caractères")
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
+
      */
     private $activite;
 
@@ -35,6 +45,7 @@ class Entreprise
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Url
      */
     private $siteWeb;
 
