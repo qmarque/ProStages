@@ -34,11 +34,27 @@ Modifier un stage
                 {{form_errors(vueFormulaire.email)}}
                 {{form_widget(vueFormulaire.email, {'attr':{'placeholder':"Email..."}})}}<br><br>
 
-                <label>&nbsp;Entreprise</label>
-                {{form_errors(vueFormulaire.entreprise)}}
-                {{form_widget(vueFormulaire.entreprise)}}
+                <b><label>&nbsp;Entreprise</label><br></b>
 
-                {{ form_row(vueFormulaire.formations, {'label':"Le stage est proposé aux formations suivantes"})}}
+                <label>&nbsp;Nom </label>
+                {{form_errors(vueFormulaire.entreprise.nom)}}
+                {{form_widget(vueFormulaire.entreprise.nom, {'attr':{'placeholder':"Nom de l'entreprise..."}})}}
+
+                <label>&nbsp;Activité principale </label>
+                {{form_errors(vueFormulaire.entreprise.activite)}}
+                {{form_widget(vueFormulaire.entreprise.activite, {'attr':{'placeholder':"Activité de l'entreprise..."}})}}
+
+                <label>&nbsp;Adresse </label>
+                {{form_errors(vueFormulaire.entreprise.adresse)}}
+                {{form_widget(vueFormulaire.entreprise.adresse, {'attr':{'placeholder':"Adresse..."}})}}
+
+                <label>&nbsp;Site web </label>
+                {{form_errors(vueFormulaire.entreprise.siteWeb)}}
+                {{form_widget(vueFormulaire.entreprise.siteWeb, {'attr':{'placeholder':"Site web..."}})}}<br>
+
+                
+                <b><label>&nbsp;Le stage est proposé aux formations suivantes</label><br></b>
+                {{ form_row(vueFormulaire.formations)}}
 
                 
 
