@@ -14,6 +14,10 @@ use App\Repository\FormationRepository;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\HttpFoundation\Request;
 use Doctrine\Common\Persistence\ObjectManager;
+use App\Form\EntrepriseType;
+use App\Form\StageType;
+
+
 
 
 
@@ -34,6 +38,76 @@ class ProStagesController extends AbstractController
 
 
     /**
+     * @Route("/stages/ajouter", name="ajoutStage")
+     */
+    //public function indexHome()
+    public function ajouterStage(Request $request, ObjectManager $manager)
+    {
+        //Création d'une entreprise vierge qui sera remplie par le formulaire
+        $stage = new Stage();
+
+        //Création du formulaire permettent de saisir une entreprise
+    
+        $formulaireStage = $this->createForm(Stagetype::class, $stage);
+
+         /*On demande au formulaire d'analyser la dernière requête Http. Si le tableau POST contenu dans cette requête
+         contient des variables nom,activite,adresse,siteweb, alors la méthode handlerequest récupère les valeurs de 
+         ces varaibles et les affecte à l'objet entreprise*/
+         $formulaireStage->handleRequest($request);
+
+         if ($formulaireStage->isSubmitted() && $formulaireStage->isValid())
+         {
+            
+            // Enregistrer la ressource en base de donnéelse
+            $manager->persist($stage);
+            $manager->flush();
+
+            // Rediriger l'utilisateur vers la page des stages
+            return $this->redirectToRoute('home');
+         }
+
+        //Création de la représentation graphique du formulaire
+        $vueFormulaire = $formulaireStage->createView();
+    
+    //Afficher la page présentant le formulaire d'ajout d'une entreprise
+    return $this->render('pro_stages/ajoutModifStage.html.twig',['vueFormulaire' => $vueFormulaire, 'action'=>"ajouter"]);
+    }
+
+    /**
+     * @Route("/stages/modifier/{id}", name="modifStage")
+     */
+    //public function indexHome()
+    public function modifierStage(Request $request, ObjectManager $manager, Stage $stage)
+    {
+        
+        //Création du formulaire permettent de saisir une entreprise
+        $formulaireStage = $this->createForm(Stagetype::class, $stage);
+
+
+         /*On demande au formulaire d'analyser la dernière requête Http. Si le tableau POST contenu dans cette requête
+         contient des variables nom,activite,adresse,siteweb, alors la méthode handlerequest récupère les valeurs de 
+         ces varaibles et les affecte à l'objet entreprise*/
+         $formulaireStage->handleRequest($request);
+
+         if ($formulaireStage->isSubmitted()&& $formulaireStage->isValid() )
+         {            
+            // Enregistrer la ressource en base de donnéelse
+            $manager->persist($stage);
+            $manager->flush();
+
+            // Rediriger l'utilisateur vers la page des stages
+            return $this->redirectToRoute('home');
+         }
+
+        //Création de la représentation graphique du formulaire
+        $vueFormulaire = $formulaireStage->createView();
+    
+    //Afficher la page présentant le formulaire d'ajout d'un stage
+    return $this->render('pro_stages/ajoutModifStage.html.twig',['vueFormulaire' => $vueFormulaire,'action'=>"modifier"]);
+    }
+
+
+    /**
      * @Route("/entreprises/ajouter", name="ajoutEntreprise")
      */
     //public function indexHome()
@@ -43,12 +117,8 @@ class ProStagesController extends AbstractController
         $entreprise = new Entreprise();
 
         //Création du formulaire permettent de saisir une entreprise
-        $formulaireEntreprise = $this->createFormBuilder($entreprise)
-        ->add('nom')
-        ->add('activite')
-        ->add('adresse')
-        ->add('siteWeb', UrlType::class)
-        ->getForm();
+    
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
 
          /*On demande au formulaire d'analyser la dernière requête Http. Si le tableau POST contenu dans cette requête
          contient des variables nom,activite,adresse,siteweb, alors la méthode handlerequest récupère les valeurs de 
@@ -82,12 +152,8 @@ class ProStagesController extends AbstractController
     {
         
         //Création du formulaire permettent de saisir une entreprise
-        $formulaireEntreprise = $this->createFormBuilder($entreprise)
-        ->add('nom')
-        ->add('activite')
-        ->add('adresse')
-        ->add('siteWeb', UrlType::class)
-        ->getForm();
+        $formulaireEntreprise = $this->createForm(EntrepriseType::class, $entreprise);
+
 
          /*On demande au formulaire d'analyser la dernière requête Http. Si le tableau POST contenu dans cette requête
          contient des variables nom,activite,adresse,siteweb, alors la méthode handlerequest récupère les valeurs de 

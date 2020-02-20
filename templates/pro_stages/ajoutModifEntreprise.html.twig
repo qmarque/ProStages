@@ -20,13 +20,13 @@ Modification d'une entreprise
                         Saisissez les caractéristiques d'une entreprise
                     </div>
                 </b>
-                {{form_start(vueFormulaire, {'attr':{'novalidate':'novalidate'}})}}
+                {{form_start(vueFormulaire)}}
 
                 <label>&nbsp;Nom </label>
                 {{form_errors(vueFormulaire.nom)}}
                 {{form_widget(vueFormulaire.nom, {'attr':{'placeholder':"Nom de l'entreprise..."}})}}
 
-                <label>&nbsp;Activité</label>
+                <label>&nbsp;Activité principale</label>
                 {{form_errors(vueFormulaire.activite)}}
                 {{form_widget(vueFormulaire.activite, {'attr':{'placeholder':"Activité de l'entreprise..."}})}}
 
