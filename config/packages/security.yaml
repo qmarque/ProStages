@@ -5,6 +5,7 @@ security:
             memory:
                 users:
                     quentin: {password: $2y$10$fKfKAa6f1e7odDYQyVNc7ek2miHmcaLVsfxkvYkD0D8fFUdL1DSf6, roles: ROLE_ADMIN }
+                    benji: {password: $2y$10$kjsaU2B5oCfJ7hNAQOTtUOj1YRr4pVjhwHZVqeFrXvUCckzQZx7t., roles: ROLE_USER }
 
     firewalls:
         dev:
