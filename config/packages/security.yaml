@@ -1,7 +1,12 @@
 security:
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        in_memory: { memory: null }
+        in_memory: 
+            memory:
+                users:
+                    quentin: {password: quentin, roles: ROLE_ADMIN }
+                    benji: {password: benji, roles: ROLE_USER }
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
@@ -21,3 +26,6 @@ security:
     access_control:
          - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
