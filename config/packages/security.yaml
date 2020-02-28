@@ -4,8 +4,7 @@ security:
         in_memory: 
             memory:
                 users:
-                    quentin: {password: quentin, roles: ROLE_ADMIN }
-                    benji: {password: benji, roles: ROLE_USER }
+                    quentin: {password: $2y$10$fKfKAa6f1e7odDYQyVNc7ek2miHmcaLVsfxkvYkD0D8fFUdL1DSf6, roles: ROLE_ADMIN }
 
     firewalls:
         dev:
@@ -28,4 +27,6 @@ security:
         # - { path: ^/profile, roles: ROLE_USER }
 
     encoders:
-        Symfony\Component\Security\Core\User\User: plaintext
+        Symfony\Component\Security\Core\User\User: 
+            algorithm: bcrypt
+            cost:      15
