@@ -145,7 +145,7 @@ class ProStagesController extends AbstractController
 
 
     /**
-     * @Route("/admin/entreprises/modifier/{id}", name="modifEntreprise")
+     * @Route("entreprises/modifier/{id}", name="modifEntreprise")
      */
     //public function indexHome()
     public function modifierEntreprise(Request $request, ObjectManager $manager, Entreprise $entreprise)

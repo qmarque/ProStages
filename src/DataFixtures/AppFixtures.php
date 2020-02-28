@@ -25,6 +25,14 @@ class AppFixtures extends Fixture
         $quentin->setPassword('$2y$10$Rts1LfpW9JFK5TTobeYmDuDE0lAssT/7.qCSWEGNHi.eKsZDNWmKC');
         $manager->persist($quentin);
 
+        $benjamin = new User();
+        $benjamin->setPrenom("Benjamin");
+        $benjamin->setNom("Delsol");
+        $benjamin->setEmail("benjamin@free.fr");
+        $benjamin->setRoles(['ROLE_USER', 'ROLE_ADMIN']);
+        $benjamin->setPassword('$2y$10$om7Gr76pmskdskr5VJi57.NknMXZw8cPfHAH23DsHJUPVPcCDUpYS');
+        $manager->persist($benjamin);
+
         
 
 
