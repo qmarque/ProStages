@@ -108,7 +108,7 @@ class ProStagesController extends AbstractController
 
 
     /**
-     * @Route("/entreprises/ajouter", name="ajoutEntreprise")
+     * @Route("/admin/entreprises/ajouter", name="ajoutEntreprise")
      */
     //public function indexHome()
     public function ajouterEntreprise(Request $request, ObjectManager $manager)
@@ -145,7 +145,7 @@ class ProStagesController extends AbstractController
 
 
     /**
-     * @Route("/entreprises/modifier/{id}", name="modifEntreprise")
+     * @Route("/admin/entreprises/modifier/{id}", name="modifEntreprise")
      */
     //public function indexHome()
     public function modifierEntreprise(Request $request, ObjectManager $manager, Entreprise $entreprise)
