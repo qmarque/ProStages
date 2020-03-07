@@ -58,15 +58,22 @@
                     <a class="nav-link" href="/formations">Formations</a>
                   </li>
 
+                  {% if is_granted('ROLE_USER') %}
                   <li class="nav-item active">
                     <a class="nav-link" href="{{path('ajoutEntreprise')}}"><i class="icon-plus"></i>Ajouter une
                       entreprise </a>
                   </li>
+                  {% endif %}
 
+
+                  {% if is_granted('ROLE_USER') %}
                   <li class="nav-item active">
                     <a class="nav-link" href="{{path('ajoutStage')}}"><i class="icon-plus"></i>Ajouter un stage </a>
                   </li>
+                  {% endif %}
+
                 </ul>
+
                 <ul class="navbar-nav ml-md-auto">
                   {% if is_granted('ROLE_USER') %}
                   <li class="nav-item active">
