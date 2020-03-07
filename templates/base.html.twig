@@ -12,7 +12,7 @@
 
     <link rel="stylesheet" href="{{asset('/css/fontello.css')}}">
 
-  <title>{% block title %}ProStages!{% endblock %}</title>
+  <title>{% block titrePage %}ProStages{% endblock %}</title>
   {% block stylesheets %}{% endblock %}
 </head>
 
@@ -69,9 +69,10 @@
   </div>
   <br>
   <br>
+<h3>{% block titre %}
+  {% endblock %}</h3>
 
   {% block contenu %}
-
   {% endblock %}
  
 

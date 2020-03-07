@@ -30,7 +30,7 @@ class AppFixtures extends Fixture
         $benjamin->setNom("Delsol");
         $benjamin->setEmail("benjamin@free.fr");
         $benjamin->setRoles(['ROLE_USER']);
-        $benjamin->setPassword('$2y$10$Rts1LfpW9JFK5TTobeYmDuDE0lAssT/7.qCSWEGNHi.eKsZDNWmKC');
+        $benjamin->setPassword('$2y$10$.FTKNR/QNzZwdMqBIxBcpeAtkCOqKhiV1g/ZXkWNjhQ3S/ObRr0.y');
         $manager->persist($benjamin);
 
        
