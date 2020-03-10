@@ -3,6 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\Formation;
+use App\Entity\Stage;
+use App\Entity\Entreprise;
 use App\Form\FormationType;
 use App\Repository\FormationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -49,13 +51,18 @@ class FormationController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="formation_show", methods={"GET"})
+     * @Route("/{nomCourt}", name="formation_show", methods={"GET"})
      */
-    public function show(Formation $formation): Response
+    public function show(Formation $formation, $nomCourt): Response
     {
-        return $this->render('formation/show.html.twig', [
-            'formation' => $formation,
-        ]);
+    // Récupérer le repository de l'entité Entreprise
+    $repositoryStage = $this->getDoctrine()->getRepository(Stage::class);
+    // Récupérer les entreprises enregistrées en BD
+    $stagesParNomFormation = $repositoryStage->findByNomFormation($nomCourt);
+    // Envoyer les entreprises récupérées à la vue chargée de les afficher
+    return $this->render('formation/show.html.twig', ['stagesParNomFormation'=>$stagesParNomFormation, 'formation' => $formation]);
+
+
     }
 
     /**
@@ -91,4 +98,6 @@ class FormationController extends AbstractController
 
         return $this->redirectToRoute('formation_index');
     }
+
+
 }
