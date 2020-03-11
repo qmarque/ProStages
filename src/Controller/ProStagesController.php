@@ -38,7 +38,7 @@ class ProStagesController extends AbstractController
 
 
     /**
-     * @Route("/profile/stages/ajouter", name="ajoutStage")
+     * @Route("/stages/ajouter", name="ajoutStage")
      */
     //public function indexHome()
     public function ajouterStage(Request $request, ObjectManager $manager)
@@ -108,7 +108,7 @@ class ProStagesController extends AbstractController
 
 
     /**
-     * @Route("/admin/entreprises/ajouter", name="ajoutEntreprise")
+     * @Route("/entreprises/ajouter", name="ajoutEntreprise")
      */
     //public function indexHome()
     public function ajouterEntreprise(Request $request, ObjectManager $manager)

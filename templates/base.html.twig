@@ -58,7 +58,7 @@
                     <a class="nav-link" href="/formation">Formations</a>
                   </li>
 
-                  {% if is_granted('ROLE_USER') %}
+                  {% if is_granted('ROLE_ADMIN') %}
                   <li class="nav-item active">
                     <a class="nav-link" href="{{path('ajoutEntreprise')}}"><i class="icon-plus"></i>Ajouter une
                       entreprise </a>

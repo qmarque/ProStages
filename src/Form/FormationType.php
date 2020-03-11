@@ -14,7 +14,6 @@ class FormationType extends AbstractType
         $builder
             ->add('nomLong')
             ->add('nomCourt')
-            ->add('stages')
         ;
     }
 
