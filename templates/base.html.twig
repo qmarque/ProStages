@@ -58,6 +58,13 @@
                     <a class="nav-link" href="/formation">Formations</a>
                   </li>
 
+
+                  {% if is_granted('ROLE_USER') %}
+                  <li class="nav-item active">
+                    <a class="nav-link" href="{{path('ajoutStage')}}"><i class="icon-plus"></i>Ajouter un stage </a>
+                  </li>
+                  {% endif %}
+
                   {% if is_granted('ROLE_ADMIN') %}
                   <li class="nav-item active">
                     <a class="nav-link" href="{{path('ajoutEntreprise')}}"><i class="icon-plus"></i>Ajouter une
@@ -65,10 +72,10 @@
                   </li>
                   {% endif %}
 
-
-                  {% if is_granted('ROLE_USER') %}
+                  {% if is_granted('ROLE_ADMIN') %}
                   <li class="nav-item active">
-                    <a class="nav-link" href="{{path('ajoutStage')}}"><i class="icon-plus"></i>Ajouter un stage </a>
+                    <a class="nav-link" href="{{path('formation_new')}}"><i class="icon-plus"></i>Ajouter une
+                      formation </a>
                   </li>
                   {% endif %}
 

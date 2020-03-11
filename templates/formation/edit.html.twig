@@ -4,10 +4,8 @@
 
 {% block contenu %}
 
-    {{ include('formation/_form.html.twig', {'button_label': 'Update'}) }}
-
-        {{ include('formation/_delete_form.html.twig') }}
-<br>
-    <a href="{{ path('formation_index') }}">Retour à la liste des formations</a>
+    {{ include('formation/_form.html.twig', {'button_label': 'Valider'}) }}
+<br><br>
+<div style="text-indent: 15px;">{{ include('formation/_delete_form.html.twig') }}</div>
 
 {% endblock %}

@@ -1,4 +1,33 @@
-{{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+
+
+ <div class="container-fluid">
+    <div class="row">
+        <div class="col-md-9" style="text-align: left">
+            <div class="card" style="width: 14 rem;">
+                <b>
+                    <div class="card-header">
+                        Saisissez les caractéristiques de la formation
+                    </div>
+                </b>
+                {{form_start(form)}}
+
+                <label>&nbsp;Nom Court</label>
+                {{form_errors(form.nomCourt)}}
+                {{form_widget(form.nomCourt, {'attr':{'placeholder':"Nom court de la formation..."}})}}
+
+                <label>&nbsp;Nom Long</label>
+                {{form_errors(form.nomLong)}}
+                {{form_widget(form.nomLong, {'attr':{'placeholder':"Nom long de la formation..."}})}}
+
+         
+
+                <br><pre> <button class="btn btn-secondary">Enregistrer</button></pre>
+               
+
+                {{form_end(form)}}
+
+
+            </div>
+        </div>
+    </div>
+</div>
