@@ -35,6 +35,7 @@ security:
          - { path: ^/entreprises/ajouter, roles: ROLE_ADMIN }
          - { path: ^/stages/ajouter, roles: [ROLE_USER,ROLE_ADMIN] }
          - { path: ^/formation, roles: ROLE_ADMIN}
+        # - { path: ^/formation, roles: ROLE_ADMIN}
         
 
     encoders:
