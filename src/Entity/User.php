@@ -147,4 +147,11 @@ class User implements UserInterface
 
         return $this;
     }
+
+    /*public function _toString()
+    {
+        return $this->getEmail();
+    }
+*/
+   
 }
