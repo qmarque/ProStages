@@ -150,7 +150,7 @@ class User implements UserInterface
 
     public function _toString()
     {
-      return $this->getPrenom()." ".$this->getNom();
+        return $this->getPrenom()." ".$this->getNom();
     }
 
    
